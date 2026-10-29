@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════
+   AquaSense — Smart Lake Health Monitor — Global Styles
+   ═══════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  body {
+    @apply font-sans antialiased;
+    @apply bg-surface-50 text-slate-800;
+    @apply dark:bg-surface-900 dark:text-slate-100;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-slate-600;
+  }
+}
+
+@layer components {
+  /* ─── Glass Card ───────────────────────────────────────────── */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl;
+    @apply bg-white/70 dark:bg-surface-800/70;
+    @apply backdrop-blur-xl;
+    @apply border border-white/20 dark:border-slate-700/50;
+    @apply shadow-glass dark:shadow-glass-dark;
+    @apply transition-all duration-300;
+  }
+  .glass-card:hover {
+    @apply shadow-lg dark:shadow-2xl;
+    @apply border-lake-200/50 dark:border-lake-700/50;
+    transform: translateY(-2px);
+  }
+
+  /* ─── Neon Badge ───────────────────────────────────────────── */
+  .badge-safe {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+    @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400;
+    @apply shadow-sm;
+  }
+  .badge-warning {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+    @apply bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400;
+    @apply shadow-sm;
+  }
+  .badge-critical {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+    @apply bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400;
+    @apply shadow-sm animate-pulse-slow;
+  }
+
+  /* ─── Gauge Ring ───────────────────────────────────────────── */
+  .gauge-ring {
+    @apply relative flex items-center justify-center;
+  }
+  .gauge-ring svg {
+    transform: rotate(-90deg);
+  }
+
+  /* ─── Sidebar ──────────────────────────────────────────────── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl;
+    @apply text-slate-600 dark:text-slate-400;
+    @apply hover:bg-lake-50 dark:hover:bg-lake-950/50;
+    @apply hover:text-lake-600 dark:hover:text-lake-400;
+    @apply transition-all duration-200;
+    @apply text-sm font-medium;
+  }
+  .sidebar-link.active {
+    @apply bg-gradient-to-r from-lake-500/10 to-aqua-500/10;
+    @apply dark:from-lake-500/20 dark:to-aqua-500/20;
+    @apply text-lake-600 dark:text-lake-400;
+    @apply border-l-2 border-lake-500;
+    @apply font-semibold;
+  }
+
+  /* ─── Button ───────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl;
+    @apply bg-gradient-to-r from-lake-500 to-aqua-500;
+    @apply hover:from-lake-600 hover:to-aqua-600;
+    @apply text-white font-semibold text-sm;
+    @apply shadow-lg shadow-lake-500/25;
+    @apply transition-all duration-200;
+    @apply active:scale-95;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl;
+    @apply bg-slate-100 dark:bg-slate-800;
+    @apply hover:bg-slate-200 dark:hover:bg-slate-700;
+    @apply text-slate-700 dark:text-slate-300 font-semibold text-sm;
+    @apply transition-all duration-200;
+    @apply active:scale-95;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl;
+    @apply bg-gradient-to-r from-red-500 to-rose-500;
+    @apply hover:from-red-600 hover:to-rose-600;
+    @apply text-white font-semibold text-sm;
+    @apply shadow-lg shadow-red-500/25;
+    @apply transition-all duration-200;
+    @apply active:scale-95;
+  }
+
+  /* ─── Input ────────────────────────────────────────────────── */
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl;
+    @apply bg-white dark:bg-surface-800;
+    @apply border border-slate-200 dark:border-slate-700;
+    @apply focus:border-lake-500 dark:focus:border-lake-500;
+    @apply focus:ring-2 focus:ring-lake-500/20;
+    @apply outline-none transition-all duration-200;
+    @apply text-sm text-slate-800 dark:text-slate-200;
+    @apply placeholder:text-slate-400 dark:placeholder:text-slate-500;
+  }
+
+  /* ─── Table ────────────────────────────────────────────────── */
+  .data-table {
+    @apply w-full text-sm;
+  }
+  .data-table thead {
+    @apply bg-slate-50 dark:bg-surface-800;
+  }
+  .data-table th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider;
+    @apply text-slate-500 dark:text-slate-400;
+    @apply border-b border-slate-200 dark:border-slate-700;
+  }
+  .data-table td {
+    @apply px-4 py-3;
+    @apply border-b border-slate-100 dark:border-slate-800;
+  }
+  .data-table tbody tr {
+    @apply hover:bg-lake-50/50 dark:hover:bg-lake-950/30;
+    @apply transition-colors duration-150;
+  }
+
+  /* ─── Cascade Stage Bar ────────────────────────────────────── */
+  .cascade-bar {
+    @apply flex gap-1 w-full;
+  }
+  .cascade-step {
+    @apply flex-1 h-2 rounded-full transition-all duration-500;
+    @apply bg-slate-200 dark:bg-slate-700;
+  }
+  .cascade-step.active {
+    @apply bg-gradient-to-r from-lake-400 to-aqua-400;
+    @apply shadow-md;
+  }
+  .cascade-step.passed {
+    @apply bg-lake-300 dark:bg-lake-700;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-lake-500 to-aqua-400 bg-clip-text text-transparent;
+  }
+  
+  .bg-mesh {
+    background-image: 
+      radial-gradient(at 40% 20%, rgba(14,165,233,0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(6,182,212,0.06) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(14,165,233,0.04) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, rgba(6,182,212,0.04) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(14,165,233,0.06) 0px, transparent 50%);
+  }
+}
